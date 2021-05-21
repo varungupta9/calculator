@@ -1,14 +1,19 @@
+
+//main container
 var div = document.createElement('div')
 div.setAttribute('class','container mt-4')
 var divBox = document.createElement('div')
 divBox.setAttribute('class','box')
+//display area for input
 var span = document.createElement('span')
 span.setAttribute('class','text-right form-control')
 span.setAttribute('id','span')
+//display area for output
 var textArea = document.createElement('input')
 textArea.setAttribute('type','text')
 textArea.setAttribute('value','')
 textArea.setAttribute('class','text-right form-control')
+//creating calculator buttons
 var button0 = createButton('button','class','bg-dark text-light','type','button','id','zero','value','0','0')
 var button1 = createButton('button','class','bg-dark text-light','type','button','id','one','value','1','1')
 var button2 = createButton('button','class','bg-dark text-light','type','button','id','two','value','2','2')
@@ -26,7 +31,7 @@ var buttonS = createButton('button','class','bg-warning text-dark','type','butto
 var buttonD = createButton('button','class','bg-warning text-dark','type','button','id','divide','value','/','/')
 var buttonM = createButton('button','class','bg-warning text-dark','type','button','id','star','value','*','X')
 
-
+//append all to document body
 divBox.addEventListener('click',display)
 buttonE.addEventListener('click',results)
 buttonC.addEventListener('click',clearAll)
@@ -34,7 +39,10 @@ divBox.append(span,textArea,button7,button8,button9,buttonA,button4,button5,butt
 div.append(divBox)
 document.body.append(div)
 
-function createButton(element, eClass , eClassValue , eType , eTyepeValue , eId , eIdValue , eValue,eValueValue,eData){
+
+//*********All Functions******** */
+
+function createButton(element, eClass , eClassValue , eType , eTyepeValue , eId , eIdValue , eValue,eValueValue,eData){ // Function to dynamically create buttons
     var btn = document.createElement(element)
     btn.setAttribute(eClass,eClassValue)
     btn.setAttribute(eType,eTyepeValue)
@@ -45,18 +53,19 @@ function createButton(element, eClass , eClassValue , eType , eTyepeValue , eId 
 
 }
 
-function display(e)
+
+function display(e) // Function to display the selected numbers
 {   
     if(e.target.value!=null){
     span.innerHTML+=e.target.value}
 }
-function results(e)
+function results(e) // Function for calulcatiom
 {
    if(span.innerHTML!==""){
     textArea.value = eval(span.innerText); }
 
 }
-function clearAll()
+function clearAll() // Funbction for clear the display 
 {
     span.innerText=""
     textArea.value="0"
